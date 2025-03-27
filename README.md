@@ -10,7 +10,7 @@ y recargarse saldo (que posee un monto límite al recargo).
 El usuario puede enviar dinero a otro mediante su ID único (sería como el CBU), como contacto agendado, o como el alias que se pone al crear la cuenta en la Wallet. Se valida que el usuario tenga
 dinero suficiente antes de procesar la transferencia, o los pagos.
 
-* Al completar la transferencia:
+# Al completar la transferencia:
 - Se resta el saldo del remitente.
 - Se suma el saldo del destinatario.
 - Se genera un registro de la transacción en ambas cuentas.
