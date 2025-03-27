@@ -35,15 +35,15 @@ Cada usuario puede ver su historial de movimientos (recargas, transferencias, pa
 - Se pueden establecer tarjetas predeterminadas para recargas rápidas.
 - Únicamente se puede poseer una tarjeta, en la que se puede desvincular y asociar otra.
 
-``
+
 # Desarrollo
-``
-Backend: Laravel
-Frontend: React JS & TypeScript
-BD: MySQL
-Validaciones: Zod, y Laravel validations
-Autenticación: JWT 
-UI: Taiwind CSS, Lucide Dev Icons
+
+- Backend: Laravel
+- Frontend: React JS & TypeScript
+- BD: MySQL
+- Validaciones: Zod, y Laravel validations
+- Autenticación: JWT 
+- UI: Taiwind CSS, Lucide Dev Icons
 
 # Pasos a seguir para utilizarlo
 
