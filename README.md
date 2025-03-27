@@ -10,33 +10,33 @@ y recargarse saldo (que posee un monto límite al recargo).
 El usuario puede enviar dinero a otro mediante su ID único (sería como el CBU), como contacto agendado, o como el alias que se pone al crear la cuenta en la Wallet. Se valida que el usuario tenga
 dinero suficiente antes de procesar la transferencia, o los pagos.
 
-# Al completar la transferencia:
+# Al completar la transferencia
 - Se resta el saldo del remitente.
 - Se suma el saldo del destinatario.
 - Se genera un registro de la transacción en ambas cuentas.
 - Se envía una notificación al destinatario
 
-* Pagos de Servicios o Compras
+# Pagos de Servicios o Compras
 Los usuarios pueden realizar pagos con su saldo disponible, estos pagos los generó únicamente desde el backend. Simulando que los pagos uno no los crea, sino que son terceros.
 
 - Obtiene una notificación al entrar un pago.
 - Se descuenta el monto de la cuenta del usuario.
 - Se registra la operación en el historial de pagos.
 
-* Historial de Transacciones y Notificaciones
+# Historial de Transacciones y Notificaciones
 Cada usuario puede ver su historial de movimientos (recargas, transferencias, pagos).
 
 - Se almacenan detalles como monto, fecha y tipo de transacción.
 - Se envían notificaciones en eventos importantes (recarga exitosa, transferencia recibida, pago realizado).
 
-* Gestión de Tarjetas de Crédito/Débito
+# Gestión de Tarjetas de Crédito/Débito
 - Los usuarios pueden agregar, eliminar y gestionar sus tarjetas.
 - Se valida que la tarjeta sea válida antes de permitir su uso.
 - Se pueden establecer tarjetas predeterminadas para recargas rápidas.
 - Únicamente se puede poseer una tarjeta, en la que se puede desvincular y asociar otra.
 
 ``
-Desarrollo
+# Desarrollo
 ``
 Backend: Laravel
 Frontend: React JS & TypeScript
