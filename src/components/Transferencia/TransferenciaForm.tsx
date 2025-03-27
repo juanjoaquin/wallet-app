@@ -1,9 +1,9 @@
-import axios from 'axios';
 import { AtSign, DollarSign, Info, User, Search, X } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { Contacto } from '../Contacto/Contacto';
+import axios from 'axios';
 
 interface Contacto {
   id: number;
@@ -69,14 +69,18 @@ export const TransferenciaForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: name === 'receptor_id' || name === 'monto'
-        ? value === "" ? null : Number(value)
-        : name === 'alias'
-          ? value === "" ? null : value
-          : value
-    }));
+    
+    if (name === 'receptor_id' || name === 'monto') {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value === "" ? null : Number(value)
+      }));
+    } else if (name === 'alias') {
+      setFormData(prev => ({
+        ...prev,
+        alias: value === "" ? null : value
+      }));
+    }
   };
 
   const handleContactSelect = (contacto: Contacto) => {
@@ -131,7 +135,7 @@ export const TransferenciaForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100  p-6">
+    <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-md w-full bg-gray-50 rounded-[30px] p-8 shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">Transferir plata</h2>
 
@@ -230,8 +234,8 @@ export const TransferenciaForm = () => {
                 <input
                   type="text"
                   name="alias"
-                  value={formData.alias ?? ""}
-                  onChange={handleChange}
+                  defaultValue={formData.alias ?? ""}
+                  onBlur={(e) => handleChange(e)}
                   className="block w-full pl-10 pr-3 py-4 text-lg border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-blue-500 transition-colors bg-gray-50 rounded-t-lg"
                   placeholder="Alias del destinatario"
                 />
@@ -258,8 +262,6 @@ export const TransferenciaForm = () => {
             </p>
           </div>
 
-
-
           {error && (
             <div className="p-4 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm rounded">
               {error}
@@ -271,8 +273,6 @@ export const TransferenciaForm = () => {
               {isOk}
             </div>
           )}
-
-          
 
           <button
             type="submit"
@@ -292,12 +292,10 @@ export const TransferenciaForm = () => {
             )}
           </button>
         </form>
-
-        
       </div>
       <div>
-            <Contacto />
-          </div>
+        <Contacto />
+      </div>
     </div>
   );
 };
